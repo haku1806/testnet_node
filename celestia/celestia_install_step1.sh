@@ -2,7 +2,7 @@
 # wget -O celestia_install_step1.sh https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh && chmod +x celestia_install_step1.sh && ./celestia_install_step1.sh
 # sh <(curl https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh || wget -O - https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh)
 OUTPUT=$(cat /etc/*release)
-if echo $OUTPUT | grep -q "Ubuntu 24.04" ; then
+if echo $OUTPUT | grep -q "Ubuntu 20.04" ; then
         echo -e "\nDetecting Ubuntu 20.04...\n"
         SERVER_OS="Ubuntu20"
 else
@@ -24,16 +24,16 @@ else
             echo -e "\nUnable to detect your OS...\n"
     fi
     echo -e "Celedes is supported on Ubuntu 20.04\n"
-    # exit 1
+#     exit 1
 fi
 
 # Snapshoot version number
 echo -e "\nSnapshoot version number 2022-11-06."
 # INIT SETTINGS
-echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"\nCELESTIA_WALLET=\"DuhItsAniketWallet\"\nCELESTIA_CHAIN=\"mamaki\"\n"
+echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"\nCELESTIA_WALLET=\"DuhItsAniketWallet\"\nCELESTIA_CHAIN=\"mamaki\""
 # set vars
 # Save the above created Variables by running this:
-read -p "Enter node name: " CELESTIA_NODENAME
+read -p "\nEnter node name: " CELESTIA_NODENAME
 echo 'export CELESTIA_NODENAME='${CELESTIA_NODENAME} >> $HOME/.bash_profile
 read -p "Enter wallet name: " CELESTIA_WALLET
 echo 'export CELESTIA_WALLET='${CELESTIA_WALLET} >> $HOME/.bash_profile
