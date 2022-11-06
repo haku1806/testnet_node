@@ -26,20 +26,34 @@ else
     # exit 1
 fi
 
+# Snapshoot version number
+echo -e "\nSnapshoot version number 2022-11-06."
 # INIT SETTINGS
 echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"\nCELESTIA_WALLET=\"DuhItsAniketWallet\"\nCELESTIA_CHAIN=\"mamaki\"\n"
-
-# CELESTIA_NODENAME="NODE_NAME" 
-# CELESTIA_WALLET="WALLET_NAME"
-# CELESTIA_CHAIN="mamaki"
-
+# set vars
 # Save the above created Variables by running this:
+if [ ! $NODENAME ]; then
+	read -p "Enter node name: " CELESTIA_NODENAME
+	echo 'export CELESTIA_NODENAME='${CELESTIA_NODENAME} >> $HOME/.bash_profile
+fi
+if [ ! $CELESTIA_WALLET ]; then
+	echo "export CELESTIA_WALLET=wallet" >> $HOME/.bash_profile
+        echo 'export CELESTIA_WALLET='${CELESTIA_WALLET} >> $HOME/.bash_profile
+fi
+
+CELESTIA_CHAIN="mamaki"
+CELESTIA_PORT=20
 echo 'export CELESTIA_CHAIN='$CELESTIA_CHAIN >> $HOME/.bash_profile
-echo 'export CELESTIA_NODENAME='${CELESTIA_NODENAME} >> $HOME/.bash_profile
-echo 'export CELESTIA_WALLET='${CELESTIA_WALLET} >> $HOME/.bash_profile
 source $HOME/.bash_profile
 
-echo -e "\nOK\n"
+echo '================================================='
+echo -e "Your node name: \e[1m\e[32m$CELESTIA_NODENAME\e[0m"
+echo -e "Your wallet name: \e[1m\e[32m$CELESTIA_WALLET\e[0m"
+echo -e "Your chain name: \e[1m\e[32m$CELESTIA_CHAIN\e[0m"
+echo -e "Your port: \e[1m\e[32m$CELESTIA_PORT\e[0m"
+echo '================================================='
+sleep 2
+
 # Update & Upgrade OS
 echo -e "\n Update & Upgrade\n"
 sudo apt update && sudo apt upgrade -y 
@@ -173,4 +187,8 @@ mkdir -p ~/.celestia-app/data
 wget -O — https://hakuvnz.hakuvn.workers.dev/0:/Miner/mamaki_2022-11-06.tar | tar xf — \
  -C ~/.celestia-app/data/
 
-sudo systemctl restart celestia-appd && journalctl -u celestia-appd -f -o cat 
+sudo systemctl restart celestia-appd && journalctl -u celestia-appd -f -o cat | trap - INT
+
+echo '=============== SETUP FINISHED ==================='
+echo -e 'To check logs: \e[1m\e[32mjournalctl -u celestia-appd -f -o cat\e[0m'
+echo -e "To check sync status: \e[1m\e[32mcurl -s localhost:${CELESTIA_PORT}657/status | jq .result.sync_info\e[0m"
