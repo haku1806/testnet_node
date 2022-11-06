@@ -35,16 +35,10 @@ echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"
 # Save the above created Variables by running this:
 if [ ! $CELESTIA_NODENAME ]; then
 	read -p "Enter node name: " CELESTIA_NODENAME
-        if [ "$(go version)" != "" ]; 
-                then
-                echo -e "\Go installed"
-        else
-                echo -e "\nError when install Go. Please check again."
-                exit 1
-        fi
 	echo 'export CELESTIA_NODENAME='${CELESTIA_NODENAME} >> $HOME/.bash_profile
 fi
 if [ ! $CELESTIA_WALLET ]; then
+        read -p "Enter wallet name: " CELESTIA_WALLET
         echo 'export CELESTIA_WALLET='${CELESTIA_WALLET} >> $HOME/.bash_profile
 fi
 
