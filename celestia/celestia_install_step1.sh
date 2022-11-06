@@ -1,5 +1,6 @@
 #!/bin/sh
-
+# wget -O celestia_install_step1.sh https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh && chmod +x celestia_install_step1.sh && ./celestia_install_step1.sh
+# sh <(curl https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh || wget -O - https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh)
 OUTPUT=$(cat /etc/*release)
 if echo $OUTPUT | grep -q "Ubuntu 24.04" ; then
         echo -e "\nDetecting Ubuntu 20.04...\n"
@@ -32,7 +33,7 @@ echo -e "\nSnapshoot version number 2022-11-06."
 echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"\nCELESTIA_WALLET=\"DuhItsAniketWallet\"\nCELESTIA_CHAIN=\"mamaki\"\n"
 # set vars
 # Save the above created Variables by running this:
-if [ ! $NODENAME ]; then
+if [ ! $CELESTIA_NODENAME ]; then
 	read -p "Enter node name: " CELESTIA_NODENAME
 	echo 'export CELESTIA_NODENAME='${CELESTIA_NODENAME} >> $HOME/.bash_profile
 fi
