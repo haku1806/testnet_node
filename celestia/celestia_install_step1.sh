@@ -30,10 +30,10 @@ fi
 # Snapshoot version number
 echo -e "\nSnapshoot version number 2022-11-06."
 # INIT SETTINGS
-echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"\nCELESTIA_WALLET=\"DuhItsAniketWallet\"\nCELESTIA_CHAIN=\"mamaki\""
+echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"\nCELESTIA_WALLET=\"DuhItsAniketWallet\"\nCELESTIA_CHAIN=\"mamaki\"\n\n"
 # set vars
 # Save the above created Variables by running this:
-read -p "\nEnter node name: " CELESTIA_NODENAME
+read -p "Enter node name: " CELESTIA_NODENAME
 echo 'export CELESTIA_NODENAME='${CELESTIA_NODENAME} >> $HOME/.bash_profile
 read -p "Enter wallet name: " CELESTIA_WALLET
 echo 'export CELESTIA_WALLET='${CELESTIA_WALLET} >> $HOME/.bash_profile
