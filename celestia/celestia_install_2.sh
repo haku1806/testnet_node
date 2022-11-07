@@ -87,10 +87,10 @@ do
                 # check if GO has been installed successfully 
                 if [ "$(go version)" != "" ]; 
                 then
-                echo -e "\Go installed"
+                        echo -e "\Go installed"
                 else
-                echo -e "\nError when install Go. Please check again."
-                exit 1
+                        echo -e "\nError when install Go. Please check again."
+                        exit 1
                 fi
 
                 # 4. INSTALL Celestia App
@@ -102,20 +102,13 @@ do
                 make install
 
                 # check if Celestia App has been installed successfully 
-                if [ "$(celestia-appd version)" != "" ]; 
-                then
-                echo -e "\Celestia App installed"
+                if [ "$(celestia-appd version)" != "" ]; then
+                        echo -e "\Celestia App installed"
                 else
-                echo -e "\nError when install Celestia App. Please check again."
-                exit 1
+                        echo -e "\nError when install Celestia App. Please check again."
+                        exit 1
                 fi
-
-                # if systemctl is-active --quiet celestia-appd then
-                #         echo -e "1\n"
-                # else 
-                #         echo -e "2\n"
-                # fi
-
+                
                 git clone https://github.com/celestiaorg/networks
 
                 # 5. Setting up P2P Network :
@@ -212,7 +205,7 @@ do
                 echo 'export CELESTIA_VALOPER='${CELESTIA_VALOPER} >> $HOME/.bash_profile 
                 source $HOME/.bash_profile
 
-                echo '=============== SETUP FINISHED ==================='
+                # echo '=============== SETUP FINISHED ==================='
                 ;;
 
         "Check Log")
