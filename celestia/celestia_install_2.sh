@@ -5,19 +5,22 @@
 
 
 PS3='Please enter your choice: '
-options=(
-"Install Node" 
-"Quit")
-
+options=("Option 1" "Option 2" "Option 3" "Quit")
 select opt in "${options[@]}"
 do
-case $opt in
-        "Install Node")
-                echo -e "\nSnapshoot version number 2022-11-06."
-                ;;
+    case $opt in
+        "Option 1")
+            echo "you chose choice 1"
+            ;;
+        "Option 2")
+            echo "you chose choice 2"
+            ;;
+        "Option 3")
+            echo "you chose choice $REPLY which is $opt"
+            ;;
         "Quit")
-                exit
-                ;;
+            break
+            ;;
         *) echo "invalid option $REPLY";;
     esac
 done
