@@ -28,7 +28,7 @@ case $opt in
                 echo -e "Check sync"
                 ;;
 
-        "Request token in Discord)
+        "Request token in Discord")
                 echo -e "Request token in Discord"
                 ;;
         
