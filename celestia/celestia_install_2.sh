@@ -1,5 +1,7 @@
 #!/bin/sh
+
 # wget -O celestia_install_step1.sh https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh && chmod +x celestia_install_step1.sh && ./celestia_install_step1.sh
+# wget -O celestia_install_2.sh https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_2.sh && chmod +x celestia_install_2.sh && ./celestia_install_2.sh
 # sh <(curl https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh || wget -O - https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh)
 # sh <(curl https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_2.sh || wget -O - https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_2.sh)
 
