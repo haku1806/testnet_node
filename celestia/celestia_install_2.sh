@@ -28,13 +28,14 @@ else
     exit 1
 fi
 
+
 PS3='Please enter your choice: '
 options=(
-        "Install Node" 
-        "Check Log" 
-        "Check Sync"
-        "Request token in Discord" 
-        "Quit"
+"Install Node" 
+"Check Log" 
+"Check Sync"
+"Request token in Discord" 
+"Quit"
 )
 select opt in "${options[@]}"
 do
@@ -213,7 +214,7 @@ do
 
                 echo '=============== SETUP FINISHED ==================='
                 ;;
-                
+
         "Check Log")
                 journalctl -u celestia-appd -f -o cat
                 ;;
