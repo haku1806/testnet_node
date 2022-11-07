@@ -24,7 +24,7 @@ else
             echo -e "\nUnable to detect your OS...\n"
     fi
     echo -e "Celedes is supported on Ubuntu 20.04\n"
-#     exit 1
+    exit 1
 fi
 
 # Snapshoot version number
@@ -58,7 +58,7 @@ sudo apt update && sudo apt upgrade -y
 echo -e "\n Install library\n"
 sudo apt install curl tar wget clang pkg-config libssl-dev jq build-essential bsdmainutils git make ncdu -y
 
-# Installing GO
+# INSTALL GO
 echo -e "\nInstall GO\n"
 cd $HOME
 ver="1.18.3"
@@ -68,8 +68,9 @@ sudo tar -C /usr/local -xzf "go$ver.linux-amd64.tar.gz"
 rm "go$ver.linux-amd64.tar.gz"
 echo "export PATH=$PATH:/usr/local/go/bin:$HOME/go/bin" >> $HOME/.bash_profile
 source $HOME/.bash_profile
+sleep 2
 
-# check if it has been installed successfully 
+# check if GO has been installed successfully 
 if [ "$(go version)" != "" ]; 
 then
     echo -e "\Go installed"
@@ -78,7 +79,7 @@ else
     exit 1
 fi
 
-# 4. Installing Celestia App
+# 4. INSTALL Celestia App
 cd $HOME
 rm -rf celestia-app
 git clone https://github.com/celestiaorg/celestia-app.git
@@ -86,7 +87,7 @@ cd celestia-app
 git checkout v0.6.0
 make install
 
-# check if it has been installed successfully 
+# check if Celestia App has been installed successfully 
 if [ "$(celestia-appd version)" != "" ]; 
 then
     echo -e "\Celestia App installed"
