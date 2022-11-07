@@ -1,6 +1,7 @@
 #!/bin/sh
 # wget -O celestia_install_step1.sh https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh && chmod +x celestia_install_step1.sh && ./celestia_install_step1.sh
 # sh <(curl https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh || wget -O - https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_step1.sh)
+# sh <(curl https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_2.sh || wget -O - https://raw.githubusercontent.com/haku1806/testnet_node/main/celestia/celestia_install_2.sh)
 OUTPUT=$(cat /etc/*release)
 if echo $OUTPUT | grep -q "Ubuntu 20.04" ; then
         echo -e "\nDetecting Ubuntu 20.04...\n"
@@ -212,20 +213,25 @@ do
 
                 echo '=============== SETUP FINISHED ==================='
                 ;;
+                
         "Check Log")
                 journalctl -u celestia-appd -f -o cat
                 ;;
+
         "Check Sync")
                 curl -s localhost:${CELESTIA_PORT}657/status | jq .result.sync_info
                 ;;
+
         "Request token in Discord)
                 echo "========================================================================================================================"
                 echo "You can request from Mamaki Testnet Faucet on the #faucet channel on Celestia's Discord server with the following command: $request <CELESTIA_ADDR>"
                 echo "========================================================================================================================"
                 ;;
+
         "Quit")
             break
             ;;
         *) echo "invalid option $REPLY";;
     esac
+done
 done
