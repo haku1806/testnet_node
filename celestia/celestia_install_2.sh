@@ -10,8 +10,10 @@ options=(
 "Check Log" 
 "Check Sync"
 "Request token in Discord" 
-"Quit"
-)
+"Quit")
+select opt in "${options[@]}"
+do
+case $opt in
 select opt in "${options[@]}"
 do
 case $opt in
