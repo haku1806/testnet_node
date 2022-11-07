@@ -11,38 +11,30 @@ options=(
 "Check Sync"
 "Request token in Discord" 
 "Quit")
-select opt in "${options[@]}"
-do
-case $opt in
+
 select opt in "${options[@]}"
 do
 case $opt in
         "Install Node")
                 # Snapshoot version number
                 echo -e "\nSnapshoot version number 2022-11-06."
-                # INIT SETTINGS
-                echo -e "\nInit wallet config\nExample:\n CELESTIA_NODENAME=\"DuhItsAniketNode\"\nCELESTIA_WALLET=\"DuhItsAniketWallet\"\nCELESTIA_CHAIN=\"mamaki\"\n\n"
-
-                # echo '=============== SETUP FINISHED ==================='
+                
                 ;;
-
         "Check Log")
                 echo -e "Check log"
-                journalctl -u celestia-appd -f -o cat
                 ;;
 
         "Check Sync")
                 echo -e "Check sync"
-                curl -s localhost:${CELESTIA_PORT}657/status | jq .result.sync_info
                 ;;
 
         "Request token in Discord)
                 echo -e "Request token in Discord"
                 ;;
-
+        
         "Quit")
-            break
-            ;;
+                exit
+                ;;
         *) echo "invalid option $REPLY";;
     esac
 done
